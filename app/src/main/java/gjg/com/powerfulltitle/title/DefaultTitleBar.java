@@ -5,6 +5,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import gjg.com.powerfulltitle.R;
@@ -80,6 +81,15 @@ public class DefaultTitleBar extends AbsTitleBar<DefaultTitleBar.DefaultBuilder.
         private final DefaultParams mParams;
 
         public DefaultBuilder(Context context, ViewGroup parent) {
+            mParams = new DefaultParams(context,parent,R.layout.title_default);
+        }
+        public DefaultBuilder(Context context) {
+            ViewGroup parent;
+            if(null != context && context instanceof Activity){
+                parent = (ViewGroup) ((ViewGroup) ((Activity)context).findViewById(android.R.id.content)).getChildAt(0);
+            }else{
+                parent = new FrameLayout(context);
+            }
             mParams = new DefaultParams(context,parent,R.layout.title_default);
         }
 

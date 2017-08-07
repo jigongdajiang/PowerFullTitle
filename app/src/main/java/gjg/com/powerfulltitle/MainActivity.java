@@ -15,9 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ViewGroup de = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
+        ViewGroup bb = (ViewGroup) findViewById(R.id.content);
         DefaultTitleBar titleBar = new DefaultTitleBar//常用标题，如果需要还可以在此框架基础自行扩展
-                .DefaultBuilder(this,//上下文
-                    (ViewGroup) findViewById(R.id.content))//指定TitleBar所在的父容器
+                .DefaultBuilder(this)//指定TitleBar所在的父容器
                 .setTitle("牛逼的TitleBar")//设置标题
                 .setSupportImmersion(true)//开启状态栏着色
                 .setImmersionColorId(R.color.colorDark)//指定状态栏颜色
